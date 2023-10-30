@@ -54,7 +54,7 @@
 			  <div id="fullpage">
 					<div class="section">				
 						{% for slide in post.get_field('images') %}
-						  <div data-anchor="p{{ slide|sanitize }}" class="slide">
+						  <div data-anchor="p{{ slide.id|sanitize }}" class="slide">
 								{% if slide.positionering == 'threeup' %}
 									<div class="row no-gutters h-100">
 										<div class="col-6 h-100"> 

@@ -9,6 +9,22 @@
   ],
   "creatorBuild" : "34518",
   "files" : {
+    "\/.nova\/Publishing\/Ahola.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/.nova\/Publishing\/Ahola-min.json",
+      "oF" : 0,
+      "oO" : 0,
+      "oS" : 1
+    },
+    "\/.nova\/Publishing\/Patternfly.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/.nova\/Publishing\/Patternfly-min.json",
+      "oF" : 0,
+      "oO" : 0,
+      "oS" : 1
+    },
     "\/404.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -80446,6 +80462,14 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/page.php",
+      "oF" : 0
+    },
+    "\/README.html" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/README.html",
       "oF" : 0
     },
     "\/README.md" : {
