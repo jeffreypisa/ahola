@@ -1,0 +1,22 @@
+<div class="fullpage-slide fullpage-prevslide"></div>
+<div class="fullpage-slide fullpage-nextslide"></div>
+<div class="fullpage-slide fullpage-prevsection"></div>
+<div class="fullpage-slide fullpage-nextsection"></div>
+
+<div class="content h-100 d-flex align-items-center">
+	<div class="container">
+	  <div class="row">
+			<div class="col-md-10 offset-md-1 col-xl-8 offset-xl-2">
+	      <h1 class="text-center"> {{ slide.titel }} {% if slide.titel_2 %} <br> {{ slide.titel_2 }} {% endif %}</h1>
+
+    		<div class="clearfix"></div>
+    		<div class="text-center">
+	        {{ slide.tekst }}
+	        {% if slide.knop %} 
+	          <a class="btn btn-outline-light" href="{{ slide.knop_link }}"> {{ slide.knop_tekst }} </a>
+	        {% endif %}
+    		</div>
+	  	</div>
+	  </div>
+	</div>
+</div>

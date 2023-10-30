@@ -1,0 +1,65 @@
+*, .btn:not(:disabled):not(.disabled) {
+	cursor: none;
+}
+
+figure#mouse-pointer {
+	background-image: url('../images/mouseicon-bk.svg');
+	background-position: center center;
+	background-repeat: no-repeat;
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	z-index: 99999;
+	margin-top: -20px;
+	margin-left: -20px; 
+	display: block;
+	pointer-events: none;
+	transform: rotate(180deg) translateZ(101px);
+	transition: transform 0.2s ease-in;
+	&.arrow {
+		background-image: url('../images/mouseicon-arrow-bk.svg');
+	}
+	&.right {
+		transform: rotate(0) translateZ(101px);
+	}
+	&.up {
+		transform: rotate(-90deg) translateZ(101px);
+	}
+	&.down {
+		transform: rotate(90deg) translateZ(101px);
+	}
+	&.clickable {
+		background-image: url('../images/mouseicon-plus-bk.svg');
+	}
+	&.close {
+		background-image: url('../images/mouseicon-close-bk.svg');
+	}
+}
+
+figure#mouse-pointer.white {
+	background-image: url('../images/mouseicon.svg');
+	&.arrow {
+		background-image: url('../images/mouseicon-arrow.svg');
+	}
+	&.clickable {
+		background-image: url('../images/mouseicon-plus.svg');
+	}
+	&.close {
+		background-image: url('../images/mouseicon-close.svg');
+	}
+}
+		
+		
+body {
+	&.home, &.single {
+		figure#mouse-pointer {
+			background-image: url('../images/mouseicon.svg');
+			&.arrow {
+				background-image: url('../images/mouseicon-arrow.svg');
+			}
+			&.clickable {
+				background-image: url('../images/mouseicon-plus.svg');
+			}
+		}
+	}
+}

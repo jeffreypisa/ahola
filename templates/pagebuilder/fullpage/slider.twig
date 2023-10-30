@@ -1,0 +1,43 @@
+{% for slide in item.slideblok %}
+  <div data-anchor="{{ slide.titel|sanitize }}" class="slide">    
+    <div  
+    	class="bg fp-bg"
+    	style="background-image: url({{ slide.achtergrond }})">
+    	
+      {% if slide.showvideo %}
+        <img data-src="{{ slide.achtergrond }}">
+        <video data-autoplay muted loop>
+          {% if slide.video_webm %}
+        	  <source data-src="{{ slide.video_webm }}" type="video/webm" />
+        	{% endif %}
+        	{% if slide.video_mp4 %}
+        	  <source data-src="{{ slide.video_mp4 }}" type="video/mp4" />
+          {% endif %}
+        </video>
+      {% endif %}
+    </div>
+    {% include 'pagebuilder/fullpage/slide.twig' %}
+  </div>
+{% endfor %}
+{% for slide in item.projecten %}
+  <div data-anchor="{{ slide.title|sanitize }}" class="slide">    
+  
+  <div class="fullpage-slide fullpage-prevslide"></div>
+	<div class="fullpage-slide fullpage-nextslide"></div>
+	<div class="fullpage-slide fullpage-prevsection"></div>
+	<div class="fullpage-slide fullpage-nextsection"></div>
+    <div  
+    	class="bg fp-bg"
+    	style="background-image: url({{ slide.thumbnail }})">
+    </div>
+    
+		<div class="projectinfo">
+			<div class="row">
+				<div class="col-md-6">
+					<a href="{{ slide.link }}"> VIEW COLLECTION </a>
+				</div>
+			</div>
+		</div>
+
+  </div>
+{% endfor %}

@@ -1,0 +1,43 @@
+{% block html_head_container %}
+  {% include 'html-header.twig' %}
+	{% block head %}
+	{% endblock %}
+	</head>
+{% endblock %}
+	
+  <body class="{{body_class}} {% if options.bganimate %} bganimate {% endif %}" data-template="base.twig">	
+  	{% include 'mobilemenu.twig' %}
+  	
+		<header class="header {% if fn('is_front_page') %} {% else %} on{% endif %}" >
+			{% block header %}
+				<div class="logo float-left">
+					<a href="{{ site.url }}" class="nounderline"> 
+						<img class="black" src="{{theme.link}}/assets/images/patternfly.svg">
+						<img class="white" src="{{theme.link}}/assets/images/patternfly_light.svg">
+					</a>
+				</div>
+			  <div class="menuitems float-right">
+          <div class="topmenu float-left">
+            {% include "menu.twig" with {'menu': menu.get_items} %}
+          </div>
+        </div>
+        <button id="mobilemenubtn" class="js-menu hamburger hamburger--arrowalt"
+				        aria-label="Menu" aria-controls="navigation">
+				  <span class="hamburger-box">
+				    <span class="hamburger-inner"></span>
+				  </span>
+				</button>
+  		{% endblock %}
+		</header>
+
+		<div id="content" role="main" class="content-wrapper">
+			{% block content %}
+				Sorry, no content
+			{% endblock %}
+		</div>
+		<div class="hidemouse">
+			<figure id="mouse-pointer"></figure>
+		</div>
+	</body>
+  {{ function('wp_footer') }}
+</html>

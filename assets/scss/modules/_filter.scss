@@ -1,0 +1,66 @@
+.mod-filter {
+	position: absolute;
+	top: 36px;
+	left: 100px;
+	right: 100px;
+	text-align: center;
+	a {
+		display: inline-block;
+		margin: 0 10px;
+		color: #6D7077;
+		position: relative;
+		&:hover {
+			color: $blue;
+			text-decoration: none;
+		}
+		&.active {
+			color: $blue;
+			text-decoration: none;
+			&:after {
+				content: '';
+				position: absolute;
+				bottom: -1px;
+				height: 1px;
+				left: 0;
+				right: 0;
+				background: $blue;
+			}
+		}
+	}
+	.collapse {
+		position: relative;
+	}
+	.mobcats {
+		.cats{
+			background: #fff;
+			box-shadow: 0px 1px 3px rgba(0,0,0,.3);
+			position: absolute;
+			z-index: 9;
+			top: 0;
+			left: 0;
+			right: 0;
+			padding: 30px 30px 15px;
+			text-align: center;
+			width: 200px;
+			margin: 0 auto;
+			a {
+				display: block;
+				margin-bottom: 15px;
+			}
+		}
+	}
+}
+
+@include media-breakpoint-up(md) {
+  .mod-filter {
+		top: 38px;
+		.mobcats {
+			display: none;	
+		}
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .mod-filter {
+  }
+}

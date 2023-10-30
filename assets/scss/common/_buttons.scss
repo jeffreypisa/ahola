@@ -1,0 +1,159 @@
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+
+a[href]:not(.btn):not(.h1):not(.card):not(.nounderline) {
+	position: relative;
+	text-decoration: none;
+	color: $blue;
+	&:before {
+		position: absolute;
+		bottom: -2px;
+		left: 0;
+		right: 0;
+		height: 1px;
+		width: 100%;
+		background: $blue;
+		z-index: 1;
+		content: '';
+	}
+	&:after {
+		position: absolute;
+		bottom: -2px;
+		left: 50%;
+		right: 50%;
+		height: 1px;
+		background: #ccc;
+		z-index: 2;
+		content: '';
+		transition: 0.2s ease-in;
+	}
+	&:hover {
+		&:after {
+			left: 0;
+			right: 0;
+		}
+	}
+}
+
+.modal, .projectinfo {
+	a[href]:not(.btn):not(.h1):not(.card):not(.nounderline) {
+		color: #fff;
+		&:before {
+			background: $blue
+		}
+		&:after {
+			background: #fff
+		}
+	}
+}
+
+.btn, .field-wrap input[type=button] {
+  height: 44px;
+  border-radius: 0;
+	padding: 0 20px;
+  font-size: 14px;
+  line-height: 40px;
+  font-weight: bold;
+  transition: 0.3s ease-in-out;
+  position: relative;
+  border-width: 3px;
+  &:after {
+	  background: #fff;
+		width: 0;
+		height: 103%;
+		top: 50%;
+		left: 50%;
+		background: #fff;
+		opacity: 0;
+		-webkit-transform: translateX(-50%) translateY(-50%);
+		-moz-transform: translateX(-50%) translateY(-50%);
+		-ms-transform: translateX(-50%) translateY(-50%);
+		transform: translateX(-50%) translateY(-50%);
+	  position: absolute;
+	  bottom: 0;
+	  z-index: -1;
+	  content: '';
+		transition: all 0.3s;
+  }
+  &:hover {
+	  background: none;
+	  color: #fff;
+    &:after {
+			width: 100%;
+			opacity: 1;
+	  	background: $blue;
+	  	opacity: 0.7;
+	  }
+  }
+  &:focus, &:active, &:target, &:not(:disabled):not(.disabled):active {
+    color: #fff;
+    background-color: lighten(#003AE6, 40%);
+    opacity: 1;
+    border-color: #fff;
+  }
+}
+
+.btn-outline-primary {
+  border-color: $darkblue;
+  border-width: 3px;
+  &:hover {
+    color: #fff;
+    background: $darkblue;
+    opacity: 1;
+    border-color: $darkblue;
+  }
+}
+.btn-primary, .field-wrap input[type=button] {
+  border: 0;
+  background-color: transparent;
+  border-color: $green;
+  color: #000;
+  position: relative;
+  &:before {
+	  background: $green;
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  right: 0;
+	  bottom: 0;
+	  z-index: -2;
+	  content: '';
+  }
+  &:hover {
+    background-color: transparent;
+    color: $green; 
+  }
+  &:focus, &:active, &:target, &:not(:disabled):not(.disabled):active {
+    color: #fff;
+    background-color: $green;
+  }
+}
+
+  
+
+@include media-breakpoint-up(md) {
+  .btn, .field-wrap input[type=button] {
+    height: 46px;
+    font-size: 13px;
+    line-height: 42px;
+    padding: 0 30px;
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .btn, .field-wrap input[type=button] {
+    height: 50px;
+    line-height: 46px;
+    font-size: 14px;
+  }
+}

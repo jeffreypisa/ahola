@@ -1,0 +1,29 @@
+.single {
+	.content-wrapper {
+		height: 100vh;
+	}
+}
+
+.single-project {
+	.projectinfo.base{
+		opacity: 1;
+		transition: 0.2s ease-in;
+	}
+	&.modal-open {
+		.projectinfo.base{
+			opacity: 0;
+		}		
+		.modal {
+			a {
+				i {
+					color: #fff;
+				}
+			}
+		}
+	}
+}
+@include media-breakpoint-up(md) {
+  .single {
+
+  }
+}

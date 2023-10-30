@@ -1,0 +1,50 @@
+{% extends "base.twig" %}
+
+{% block content %}
+  <section class="">
+    <div class="container-fluid">
+    	<div class="mod-filter">
+      	<div class="d-none d-md-block">
+          <a href="{{ site.url }}/collection/" class="nounderline {% if current_category == '' %} active {% endif %}">All</a>
+          {% for cat in categories %}
+            <a href="{{ site.url }}/categorie/{{ cat.slug }}" class="nounderline {% if cat.id == current_category %} active {% endif %}">{{ cat.title }}</a>
+          {% endfor %}
+      	</div>
+      	<div class="d-md-none mobcats">
+      		<a data-toggle="collapse" href="#categorie" role="button" aria-expanded="false" aria-controls="categorie">Kies categorie</a>
+      		<div class="clearfix"></div>
+      		<br>
+      		<div class="collapse" id="categorie">
+      			<div class="cats">
+		          <a href="{{ site.url }}/collection/" class="nounderline {% if current_category == '' %} active {% endif %}">All</a>
+		          {% for cat in categories %}
+		            <a href="{{ site.url }}/categorie/{{ cat.slug }}" class="nounderline {% if cat.id == current_category %} active {% endif %}">{{ cat.title }}</a>
+		          {% endfor %}
+      			</div>
+	      	</div>
+      	</div>
+      </div>
+      <div class="row">
+        <div class="col-md-18 offset-md-1">
+          <h1 class="d-none"> Collection </h1>
+        </div>
+      </div>
+      <div class="cards cards-archive">
+        <div class="row">
+          {% for blok in posts %}  
+            {% set catje = blok.terms('category') | join(' ') | lower %}
+            <div class="col-md-6 col-lg-4">
+              <div class="card-wrapper nopb">
+                <a href="{{ blok.link }}" class="card" style="background-image: url({{ TimberImage(blok.thumbnail)|resize(480) }});">
+                  <div class="card-body">
+                    <h3> {{ blok.title }} </h3>
+                  </div>
+                </a>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

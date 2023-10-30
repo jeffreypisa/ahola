@@ -1,0 +1,65 @@
+<div class="mod-content vh-100">
+	<div class="row no-gutters vh-100">
+		<div class="scrollthis {% if item.toon_afbeelding == 'niet' %}col-lg-8 offset-lg-2 {% else %} col-lg-6 {% endif %}">
+			<div class="content">
+				<span class="d-none js-setbw">{{ item.toon_afbeelding }}</span>
+				<h1> {{ post.title }} </h1>
+				{% if item.lead %}
+					<p class="lead">
+						{{ item.lead }}
+					</p>
+					<br>
+				{% endif %}
+				{{ item.content }}
+				{% if item.download %}
+					<a href="{{item.download_link}}"> <i class="fal fa-arrow-to-bottom"></i>{{ item.download_link_naam }} </a>
+				{% endif %}
+				{% if item.toon_contact_gegevens %}
+					{% if item.email %}
+						<p>
+							 <i class="fal fa-envelope"></i> <a href="mailto:{{item.email}}">{{ item.email_titel }} </a>
+						</p>
+					{% endif %}
+					{% if item.adres %}
+						<p>
+							{{ item.adres }} 
+						</p>
+						<br>
+					{% endif %}
+					{% if item.instagram_link %}
+						<p>
+							<i class="fab fa-instagram" style="width: 75px"></i><a href="{{ item.instagram_link }}" target="_blank">Follow </a>
+						</p>
+					{% endif %}
+					{% if item.linkedin_link %}
+						<p>
+							<i class="fab fa-linkedin" style="width: 75px"></i><a href="{{ item.linkedin_link }}" target="_blank">Connect </a>
+						</p>
+					{% endif %}
+					{% if item.facebook_link %}
+						<p>
+							<i class="fab fa-facebook" style="width: 75px"></i><a href="{{ item.facebook_link }}" target="_blank">Follow </a>
+						</p>
+					{% endif %}
+					{% if item.behance_link %}
+						<p>
+							<i class="fab fa-behance" style="width: 75px"></i><a href="{{ item.behance_link }}" target="_blank">Follow </a>
+						</p>
+					{% endif %}
+					{% if item.bno_link %}
+						<p>
+							<img src="{{ theme.link }}/assets/images/lidbno.jpg" alt="lidbno" width="60" height="14" style="margin-right: 11px"/>
+							<a href="{{ item.bno_link }}" target="_blank" class="bno">View</a>
+						</p>
+					{% endif %}
+				{% endif %}
+			</div>
+		</div>
+		{% if item.toon_afbeelding != 'niet' %}
+			<div class="col-lg-6 order-first {% if item.toon_afbeelding == 'rechts' %} order-lg-last {% endif %}">
+				<div class="foto {{ item.toon_afbeelding }}" style="background-image: url({{ item.afbeelding }})">
+				</div>
+			</div>
+		{% endif %}
+	</div>
+</div>

@@ -1,0 +1,50 @@
+footer {
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
+	right: 10px;
+	text-align: center;
+  font-size: 12px;
+  line-height: 20px;
+  p {
+	  color: #fff;
+	  position: relative;
+		a {
+		  color: $green;
+		  position: relative;
+		  &:before {
+				position: absolute;
+		    bottom: -1px;
+		    height: 1px;
+		    width: 100%;
+		    background: $green;
+		    content: '';
+		    transition: 0.2s ease-in-out;
+		    opacity: 0;
+		    transform: translateY(10px);
+			}
+		  &:hover {
+		    color: $green;
+		    position: relative;
+		    text-decoration: none;
+		    &:before {
+			    opacity: 1;
+			    transform: translateY(0);
+		    }
+		  }
+		  &:active, &:focus, &:target {
+		    color: $green;
+		  }
+		}
+	}
+}
+@include media-breakpoint-up(md) {
+  .footer {
+
+  }
+}
+@include media-breakpoint-up(lg) {
+  .footer {
+
+  }
+}

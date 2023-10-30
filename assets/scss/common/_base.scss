@@ -1,0 +1,201 @@
+button:focus { outline: none; }
+body {
+  font-family: "Priva Pro";
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 19px;
+  color: #6D7077;
+  -webkit-font-smoothing: antialiased;
+  opacity: 0;
+  -webkit-overflow-scrolling: touch;
+  &.home, &.single {
+  	background: #000;
+  }
+  &.loaded {
+	  opacity: 1;
+	  transition: opacity 1s ease-in;
+  }
+}
+.hidemouse {
+  display: inline-block;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+  margin-left: -20px;
+}
+.form-control {   
+  /* Remove First */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;  
+}
+
+textarea:focus,
+input:focus,
+*:focus {
+  outline: none;
+}
+
+.vh-100 {
+	min-height: 100vh;
+}
+.lead {
+	font-size: 18px;
+	line-height: 22px;
+}
+	
+h1, .h1,h2, .h2,h3,h4,h5 {
+	color: #38393C;
+}
+
+h1, .h1 {
+  font-size: 26px;
+  line-height: 30px;
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+
+h2, .h2 {
+  font-size: 18px;
+  line-height: 22px;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 16px;
+  line-height: 20px;
+  margin-bottom: 30px;
+}
+
+h4 {
+  font-size: 17px;
+  line-height: 20px;  
+  margin-bottom: 24px;
+}
+
+h5 {
+  font-size: 15px;
+  line-height: 18px;  
+  margin-bottom: 20px;
+}
+
+p + h2, .h2, p + h3, p + h4 {
+  margin-top: 30px;
+}
+p {
+  color: $grey;
+  i {
+	  color: $grey;
+	  width: 36px;
+	  font-size: 22px;
+	  transform: translateY(4px);
+  }
+}
+a {
+  color: $blue;
+  transition: 0.2s ease-in;
+
+  &:hover {
+    color: $blue;
+    i {
+	    color: $blue;
+    }
+  }
+  &:active, &:focus, &:target {
+    color: $blue;
+  }
+}
+ul, ol {
+  padding-left: 20px;
+}
+.container {
+  padding: 0 25px;
+}
+
+.container-fluid {
+padding: 0 25px;
+}
+@include media-breakpoint-up(md) {
+	body {
+		line-height: 20px;
+	}
+	
+	.lead {
+		font-size: 20px;
+		line-height: 28px;
+	}
+	
+  h1, .h1 {
+    font-size: 26px;
+    line-height: 30px;
+    margin-bottom: 30px;
+  }
+  
+  h2, .h2 {
+    font-size: 20px;
+    line-height: 28px;
+    margin-bottom: 30px;
+  }
+  
+  h3 {
+    font-size: 18px;
+    line-height: 22px;  
+  }
+  
+  h4 {
+    font-size: 19px;
+    line-height: 23px;  
+  }
+  
+  h5 {
+    font-size: 18px;
+    line-height: 22px;  
+  }
+  
+  .container {
+    padding: 0 30px;
+  }
+}
+
+@include media-breakpoint-up(xl) {
+	body {
+		font-size: 16px;
+		line-height: 21px;
+	}
+	
+	.lead {
+		font-size: 20px;
+		line-height: 28px;
+	}
+	
+  h1, .h1 {
+    font-size: 26px;
+    line-height: 30px;
+    margin-bottom: 30x;
+  }
+  
+  h2, .h2 {
+    font-size: 20px;
+    line-height: 28px;
+    margin-bottom: 30px;
+  }
+  
+  h3 {
+    font-size: 18px;
+    line-height: 22px;  
+  }
+  
+  h4 {
+    font-size: 21px;
+    line-height: 25px;  
+  }
+  
+  h5 {
+    font-size: 18px;
+    line-height: 24px;  
+  }
+}
+
+@include media-breakpoint-up(xl) {
+
+}

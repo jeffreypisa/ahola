@@ -1,0 +1,71 @@
+{% if item.slideblok|length > 0 %}
+  <div id="fullpage">
+
+		{% for item in item.slideblok %}
+			<div class="section">				
+				{% if item.acf_fc_layout == 'slider' %}
+					{% include 'pagebuilder/fullpage/slider.twig' %}
+					
+				{% elseif item.acf_fc_layout == 'content' %}
+					{% include 'pagebuilder/fullpage/content.twig' %}
+					
+				{% endif %}
+			</div>
+		{% endfor %}
+
+  </div>
+{% endif %}
+
+
+<script> 
+  (function($) {
+    $( document ).ready(function() {
+    	$('#fullpage').fullpage({
+    		licenseKey: '09768663-D0844610-BC968546-15A28FCB',
+    		anchors: [
+          {% for item in item.slideblok %}
+          	{% if item.acf_fc_layout == 'slider' %}
+          		{% for slide in item.slideblok %}
+            		'{{ slide.titel|sanitize }}',
+            	{% endfor %} 
+            {% endif %}
+          {% endfor %} 
+				],
+    		autoScrolling: true,
+    		scrollHorizontally: true,
+    		easingcss3: 'cubic-bezier(0.550, 0.055, 0.675, 0.190)',
+				scrollingSpeed: 1000,
+    		afterLoad: function( origin, destination, direction ) {
+        	if ($('.section.active .mod-blokken').hasClass('intern') ) {
+          	$('header').addClass('show-menubtn');
+          	$('.topmenu').removeClass('hidethis');
+          } else {
+						$('header').removeClass('show-menubtn');
+          	$('.topmenu').addClass('hidethis');
+          }
+      	}
+    	});
+    	
+    	$('.fullpage-gotoslide').click(function(){
+        $.fn.fullpage.moveSectionDown();
+      });
+      
+      $('.fullpage-prevslide').click(function(){
+        $.fn.fullpage.moveSlideLeft();
+      });
+      
+      $('.fullpage-nextslide').click(function(){
+        $.fn.fullpage.moveSlideRight();
+      });
+      
+      $('.fullpage-prevsection').click(function(){
+        $.fn.fullpage.moveSectionUp();
+      });
+      
+      $('.fullpage-nextsection').click(function(){
+        $.fn.fullpage.moveSectionDown();
+      });
+      
+    });
+  }(jQuery)); 
+</script>

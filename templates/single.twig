@@ -1,0 +1,165 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+	<!-- Modal -->
+	<div class="modal modal-left-pane fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="projectinfo">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="model-content">
+				      <h1> {{ post.title }} </h1>
+				      <a href="#" class="js-closemodal nounderline"><i class="fal fa-times"></i></a><a href="#" class="js-closemodal " style="margin-left: 6px">CLOSE</span> </a>
+				      <div class="clearfix"></div>
+				      <br>
+				      {{ post.get_field('toelichting') }}
+				      <div class="clearfix"></div>
+				      {% if post.client %}
+					      <p>
+					      	<strong> Theme </strong><br>
+					      	<a href="{{ post.get_field('client_link') }}" target="_blank"> {{ post.client }}</a>
+					      </p>
+					    {% endif %}
+					    {% if post.thedate %}
+					      <p>
+					      	<strong> Year </strong><br>
+					      	{{ post.thedate|date('Y') }}
+					      </p>
+					    {% endif %}
+					    {% if post.extraveld_linknaam %}
+					      <p>
+					      	<strong> {{ post.extraveld_titel }} </strong><br>
+					      	<a {% if post.extraveld_link %} href="{{ post.get_field('extraveld_link')}}" {% endif %} target="_blank">{{ post.extraveld_linknaam }}</a>
+					      </p>
+				      {% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="content-wrapper d-flex h-100 w-100">		
+		<section class="d-flex h-100 w-100 d-flex align-items-center post-type-{{post.post_type}} nopadding" id="post-{{post.ID}}">
+			<div class="projectinfo base">
+				<div class="row">
+					<div class="col-md-6">
+			      <h1> {{ post.title }} </h1>
+						<a href="#" data-toggle="modal" data-target="#modal" > INFO </a>
+					</div>
+				</div>
+			</div>
+			{% if post.images|length > 0 %}
+			  <div id="fullpage">
+					<div class="section">				
+						{% for slide in post.get_field('images') %}
+						  <div data-anchor="p{{ slide|sanitize }}" class="slide">
+								{% if slide.positionering == 'threeup' %}
+									<div class="row no-gutters h-100">
+										<div class="col-6 h-100"> 
+											<div  
+									    	class="bg bg-space fp-bg"
+									    	style="background-image: url({{ slide.afbeelding }})">
+									    </div>
+										</div>
+										<div class="col-6 h-100"> 
+											<div class="row no-gutters h-100">
+												<div class="col-12 h-50"> 
+													<div  
+											    	class="bg bg-space fp-bg"
+											    	style="background-image: url({{ slide.afbeelding_2 }})">
+											    </div>
+												</div>
+												<div class="col-12 h-50"> 
+											    <div  
+											    	class="bg bg-space fp-bg"
+											    	style="background-image: url({{ slide.afbeelding_3 }})">
+											    </div>
+												</div>
+											</div>
+										</div>
+									</div>
+								{% else %}
+							  	<div class="row no-gutters h-100">
+							  		{% if slide.positionering == 'links' %}
+							  			<div class="col-md-6 h-100">    
+										{% elseif slide.positionering == 'midden' %}
+											<div class="col-md-6 offset-md-3 h-100">  
+										{% elseif slide.positionering == 'rechts' %}
+											<div class="col-md-6 offset-md-6 h-100"> 
+										{% else %}	 
+											<div class="col-md-12 h-100">  
+										{% endif %}
+									    <div  
+									    	class="bg fp-bg"
+									    	style="background-image: url({{ slide.afbeelding }})">
+									    </div>
+							  		</div>
+							  	</div>
+							  {% endif %}
+								<div class="fullpage-slide fullpage-prevslide"></div>
+								<div class="fullpage-slide fullpage-nextslide"></div>
+							</div>
+						{% endfor %}
+					</div>
+			  </div>
+			{% endif %}
+
+			<script> 
+			  (function($) {
+			    $( document ).ready(function() {
+			    	$('#fullpage').fullpage({
+			    		licenseKey: '09768663-D0844610-BC968546-15A28FCB',
+			    		anchors: [
+			      		{% if item.slideblok|length > 0 %}
+			            {% for item in item.slideblok %}
+			            	{% if (item.acf_fc_layout == 'slider') or (item.acf_fc_layout == 'content') or (item.acf_fc_layout == 'blokken_intern') or (item.acf_fc_layout == 'blokken_extern')  %}
+			              	'{{ item.menu_titel|sanitize }}',
+			              {% endif %} 
+			            {% endfor %}  
+			          {% endif %} 
+							],
+			    		autoScrolling: true,
+			    		scrollHorizontally: true,
+			    		easingcss3: 'cubic-bezier(0.550, 0.055, 0.675, 0.190)',
+							scrollingSpeed: 1000,
+							css3:false,
+							normalScrollElements: '.modal-dialog',
+			    		afterLoad: function( origin, destination, direction ) {
+			        	if ($('.section.active .mod-blokken').hasClass('intern') ) {
+			          	$('header').addClass('show-menubtn');
+			          	$('.topmenu').removeClass('hidethis');
+			          } else {
+									$('header').removeClass('show-menubtn');
+			          	$('.topmenu').addClass('hidethis');
+			          }
+			      	}
+			    	});
+			    	
+			    	$('.fullpage-gotoslide').click(function(){
+			        $.fn.fullpage.moveSectionDown();
+			      });
+			      
+			      $('.fullpage-prevslide').click(function(){
+			        $.fn.fullpage.moveSlideLeft();
+			      });
+			      
+			      $('.fullpage-nextslide').click(function(){
+			        $.fn.fullpage.moveSlideRight();
+			      });
+			      
+			      $('.fullpage-prevsection').click(function(){
+			        $.fn.fullpage.moveSectionUp();
+			      });
+			      
+			      $('.fullpage-nextsection').click(function(){
+			        $.fn.fullpage.moveSectionDown();
+			      });
+			       
+			    });
+			  }(jQuery)); 
+			</script>
+		</section>	  
+	</div><!-- /content-wrapper -->
+{% endblock %}

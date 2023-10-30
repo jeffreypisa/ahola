@@ -1,0 +1,11 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	<div class="content-wrapper vh-100">
+		<article class="post-type-{{post.post_type}} vh-100" id="post-{{post.ID}}">
+			<div class="article-body vh-100">
+			  {% include 'pagebuilder.twig' %}
+			</div>
+		</article>
+	</div><!-- /content-wrapper -->
+{% endblock %}

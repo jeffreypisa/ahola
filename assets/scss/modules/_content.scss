@@ -1,0 +1,55 @@
+.mod-content {
+	overflow-x: hidden;
+	.foto {
+		background-size: cover;
+		background-position: center center;
+		min-height: 300px;
+	}
+	.content {
+		padding: 40px 25px;
+	}
+	iframe {
+		max-width: 100%;
+	}
+	.bno {
+	}
+}
+
+@include media-breakpoint-up(md) {
+	.mod-content {
+		height: 100vh;
+		.fote {
+			min-height: 400px;
+		}
+		.content {
+			padding: 100px 70px;
+		}
+	}
+}
+
+@include media-breakpoint-up(lg) {
+	.mod-content {
+		.foto {
+			&.links {
+				position: fixed;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				width: 50%;
+			}
+			&.rechts {
+				position: fixed;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				width: 50%;
+			}
+		}
+		.content {
+			padding: 110px 90px;
+		}
+		
+		.scrollthis {
+		}
+	}
+}

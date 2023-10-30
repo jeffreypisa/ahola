@@ -1,0 +1,169 @@
+header {
+  height: auto;
+  transition: 0.2s ease-in-out;  
+  .hamburger {
+		transform: translateZ(101px);
+  }
+  &.leftwhite, &.rightwhite {
+	  .logo {
+		  a {
+			  color: #fff;
+		  }
+	  }
+	  .menuitems {
+		  a {
+			  color: #fff;
+		  }
+	  }
+	  .hamburger {
+		  z-index: 9999;
+		  .hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
+			  background: #fff;
+			  z-index: 9999;
+		  }
+	  }
+  }
+  .logo {
+	  top: 18px;
+	  left: 25px;
+	  position: fixed;
+	  z-index: 10;
+	  transition: 0.2s ease-in-out;
+	  a {
+		  color: #38393C;
+		  font-weight: 600;
+		  font-size: 17px;
+		  line-height: 17px;
+		  display: block;
+		  &:hover {
+			  text-decoration: none;
+		  }
+	  }
+  }
+  .menuitems {
+	  top: 22px;
+	  right: 60px;
+	  position: fixed;
+	  z-index: 9;
+	  ul {
+		  list-style-type: none;
+		  li {
+			  float: left;
+			  margin-left: 12px;
+		  }
+		  li:not(.wpml-ls-item) {
+			  display: none;
+		  }
+	  }
+	  a {
+		  display: inline-block;
+		  float: left;
+		  margin-top: 6px;
+		  color: $grey;
+		  font-size: 12px;
+		  line-height: 34px;
+		  font-weight: 600;
+		  text-transform: uppercase;
+		  &:hover {
+			 	opacity: 0.6;
+			  text-decoration: none;
+		  }
+	  }
+  }
+  #mobilemenubtn {
+	  top: 22px;
+	  right: 25px;
+	  position: fixed;
+	  z-index: 999;		  
+  }
+}
+
+body {
+	&.home, &.single {
+		header {
+			.logo a {
+				color: #fff;
+			}
+			.menuitems {
+				a {
+					color: #fff;
+				}
+			}
+		}
+	}
+}
+
+body.opensidemenu { 
+	&.home, &.single {
+  	header {
+			.menuitems {
+				a {
+					color: #fff;
+				}
+			}
+  	}
+  }
+}
+
+@include media-breakpoint-up(md) {
+  body {
+  }
+  header {
+		.logo {
+		  a {
+			  font-weight: 600;
+			  font-size: 20px;
+			  line-height: 20px;
+		  }
+	  }
+	  .menuitems, #mobilemenubtn {
+			top: 24px;
+		}
+		.menuitems {
+			ul {
+				li:not(.wpml-ls-item) {
+				  display: inline-block;
+			  }
+		  }
+		}
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  header {
+	  &.leftwhite {
+		  .logo {
+			  a {
+				  color: #fff;
+			  }
+		  }
+			.menuitems {
+			  a {
+				  color: $grey;
+			  }
+		  }
+		  .hamburger {
+			  .hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
+				  background: $grey;
+				}
+			} 
+	  }
+	  &.rightwhite {
+		  .logo {
+			  a {
+				  color: $grey;
+			  }
+		  }
+		  .menuitems {
+			  a {
+				  color: #fff;
+			  }
+		  }
+		  .hamburger {
+			  .hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
+				  background: #fff;
+			  }
+		  }
+	  }
+  }
+}
